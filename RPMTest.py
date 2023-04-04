@@ -48,11 +48,19 @@ def updateData(frame=None):
         #update RPM in tkinter
         RPMVar.set("RPM: {:.0f}".format(unpacked[4]))
         print("RPM: " + "{:.0f}".format(unpacked[4]))
-        
+        print("list length: " + str(len(x)))
+        print()
+
         #update RPM in graph
         x.append(loopNum)
         y.append(unpacked[4])
+        #Remove oldest plot point after 500 datapoints
+        if len(x) > 500:
+            x.pop(0)
+            y.pop(0)
         ln.set_data(x, y)
+        
+        #Move the graph horizonatally as points are plotted
         plt.xlim(loopNum-200, loopNum)
         
         #Update the upper limit of RPM graph based on the car you're driving
