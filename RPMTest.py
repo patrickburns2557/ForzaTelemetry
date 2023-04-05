@@ -48,8 +48,6 @@ def updateData(frame=None):
         #update RPM in tkinter
         RPMVar.set("RPM: {:.0f}".format(unpacked[4]))
         print("RPM: " + "{:.0f}".format(unpacked[4]))
-        print("list length: " + str(len(x)))
-        print()
 
         #update RPM in graph
         x.append(loopNum)
@@ -59,7 +57,7 @@ def updateData(frame=None):
             x.pop(0)
             y.pop(0)
         ln.set_data(x, y)
-        
+
         #Move the graph horizonatally as points are plotted
         plt.xlim(loopNum-200, loopNum)
         
@@ -81,7 +79,7 @@ RPMLabel = tk.Label(
     window,
     font=("Arial", 20),
     width=40,
-    height=3,
+    height=1,
     textvariable=RPMVar,
     anchor="w",
     justify=tk.LEFT
